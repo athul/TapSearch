@@ -17,7 +17,7 @@ def toLower(s):
     spl = string_low.split("\n\n")  # split with para
     uid_list = []
     for i in range(len(spl)):
-        uid_list.append(id(spl[i]))
+        uid_list.append(i)
     return spl, len(spl), uid_list
 
 
@@ -38,13 +38,14 @@ for i in range(length):
         index.add_term_occurrence(sparr_split[j], uid[i])
 
 
-def doc_splitter():
+def doc_splitter(query):
     for j in range(len(uid)):
         for i in range(len(st_arr)):
             sparr = toString(st_arr[i])
             sparr_split = sparr.split(" ")
             index.add_term_occurrence(sparr_split[i], uid[j])
-    print(index.items())
+    indexes=index.items()
+    if query in indexes:
+        print(indexes.get(query))
 
-
-doc_splitter()
+doc_splitter("that")
