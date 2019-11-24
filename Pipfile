@@ -8,6 +8,7 @@ black = "*"
 
 [packages]
 hashedindex = "*"
+django = "*"
 
 [requires]
 python_version = "3.7"
