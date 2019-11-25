@@ -4,17 +4,13 @@
 <title>User Information Form</title>
 </head>
 <body>
-{% comment %} <form action="" method="POST">
-{{ form.as_p }}
-<input type="Submit" name="submit" value="Submit"/>
-</form> {% endcomment %}
 <form action="" method="POST">{% csrf_token %}
-  <textarea name="data" rows="10" cols="10"></textarea>
+  <input name="q" type="text" placeholder="Search...">
   <input type="Submit" name="submit" value="Submit"/>
 </form>
 {% if submitbutton == "Submit" %} 
 
 {% endif %}
-{{ data }}
+    {{ index }}
 </body>
 </html>
