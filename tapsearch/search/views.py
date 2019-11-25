@@ -1,17 +1,20 @@
 from django.shortcuts import render
 from .forms import searchForm,indexdataForm
+from django.forms.models import model_to_dict
 from .models import Document,query
 import hashedindex
 
 # Create your views here.
 def index(request):
     submitbutton = request.POST.get("submit")
-    data=Document.objects.all()
+    data=vars(Document.objects.values('doc'))
 
+    list_result =data
+    print(list_result)
     form=indexdataForm(request.POST or None)
     if form.is_valid():
         datum=form.cleaned_data.get('Document')
-    context={"form":form,"data":data}
+    context={"form":form,"data":list_result}
     return render(request,"search/index.html",context)
     #return datum
 
